@@ -8,20 +8,21 @@ namespace DependencyAndMoqExcerise
 {
     public class ReadFile : IReadFile
     {
-        public Dictionary<string, List<string>> AllGroups = new Dictionary<string, List<string>>();
+        private static Dictionary<string, List<string>> _allGroups = new Dictionary<string, List<string>>();
 
-        string path = "/Users/hongle/Projects/DependencyAndMoqExcerise/DependencyAndMoqExcerise/Groups.txt";
-        string IReadFile.path { get { return this.path; } set { this.path = value; } }
-
-
-        public void execute()
+        public void LoadFromFile(string path)
         {
-            var readFile = ReadGroupFile();
-            AddToDictionary(readFile);
+            var readFile = ReadGroupFile(path);
+            AddToDictionary(readFile); 
         }
 
 
-        public List<string> ReadGroupFile()
+        public Dictionary<string, List<string>> GetDictionary()
+        {
+            return _allGroups;
+        }
+
+        public List<string> ReadGroupFile(string path)
         {
             FileInfo file = new FileInfo(path);
             List<string> lines = new List<string>();
@@ -42,7 +43,7 @@ namespace DependencyAndMoqExcerise
             foreach(var content in list)
             {
                 var keyAndValues = SplitArrayContent(content);
-                AllGroups.Add(keyAndValues.Item1, keyAndValues.Item2);
+                _allGroups.Add(keyAndValues.Item1, keyAndValues.Item2);
 
             }
 

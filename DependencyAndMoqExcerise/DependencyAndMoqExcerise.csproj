@@ -16,4 +16,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Castle.Windsor" Version="5.0.0" />
+  </ItemGroup>
 </Project>

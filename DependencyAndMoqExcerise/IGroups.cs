@@ -5,6 +5,6 @@ namespace DependencyAndMoqExcerise
 {
     public interface IGroups
     {
-        void RemoveGroup(string groupName);
+        List<string> GetGroup(string groupName);
     }
 }

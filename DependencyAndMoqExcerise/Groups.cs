@@ -6,84 +6,28 @@ namespace DependencyAndMoqExcerise
 {
     public class Groups : IGroups
     {
-        Dictionary<string, List<string>> AddedGroups = new Dictionary<string, List<string>>();
+        IReadFile loadedFile; 
 
-        public Groups(Dictionary<string,List<string>> AddedGroups)
+        public Groups(IReadFile loadedFile)
         {
-            this.AddedGroups = AddedGroups;
+            this.loadedFile = loadedFile;
+
         }
-
-        public bool DoesKeyExist(string key)
+        public List<string> GetGroup(string groupName)
         {
-            if (AddedGroups.ContainsKey(key))
-            {
-                return AddedGroups.ContainsKey(key);
-            }
+            var _allGroups = loadedFile.GetDictionary();
 
-            return false;
-        }
-
-        public IEnumerable<string> GetGroup(string groupName)
-        {
             List<string> value;
            
-                if (DoesKeyExist(groupName))
+                if (_allGroups.ContainsKey(groupName))
                 {
-                AddedGroups.TryGetValue(groupName, out value);
+                _allGroups.TryGetValue(groupName, out value);
                 return value;
 
                 } else{
                 throw new Exception("Group does not Exist");
                  
                  };
-
-            
-        }
-
-        public List<string> GettingAllNamesFromGroups(IEnumerable<string> groupChoice)
-        {
-            Queue<string> groupQueue = new Queue<string>() { groupChoice};
-            List<string> returnNames = new List<string>();
-
-            while (groupQueue.Count > 0)
-            {
-                var groupName = groupQueue.Dequeue();
-                if (DoesKeyExist(groupName))
-                {
-                   
-                    foreach(var name in AddedGroups[groupName])
-                    {
-                        if (AddedGroups.ContainsKey(name))
-                        {
-                            if (!returnNames.Contains(name))
-                            {
-                                returnNames.Add(name);
-                                groupQueue.Enqueue(name);
-                            }
-                        } else if(returnNames.){
-
-                        }
-
-                    }
-                }
-            }
-
-
-
-            return null;
-        }
-
-        public void RemoveGroup(string groupName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ThrowExceptions(string groupName)
-        {
-            if (!DoesKeyExist(groupName)){
-                            
-                    throw new Exception("Group does not exist");
-            };
         }
     }
 }

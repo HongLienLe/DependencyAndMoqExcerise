@@ -1,6 +1,8 @@
 ﻿using System;
+using Castle.MicroKernel.Registration;
 using System.Collections.Generic;
 using System.IO;
+using Castle.Windsor;
 
 namespace DependencyAndMoqExcerise
 {
@@ -8,15 +10,21 @@ namespace DependencyAndMoqExcerise
     {
         static void Main(string[] args)
         {
-            Dictionary<string, List<string>> testGroup = new Dictionary<string, List<string>>()
+            string path = "/Users/hongle/Projects/DependencyAndMoqExcerise/DependencyAndMoqExcerise/Groups.txt";
+            var container = new WindsorContainer();
+            container.Register(Component.For<IReadFile>().ImplementedBy<ReadFile>());
+            container.Register(Component.For<IGroups>().ImplementedBy<Groups>());
+
+            var readFile = container.Resolve<IReadFile>();
+            readFile.LoadFromFile(path);
+
+            foreach (var thing in readFile.GetDictionary())
             {
-                {"Testing", new List<string>() { "Name1","Testing2" }},
-                {"Testing2", new List<string>() { "Name2","Name3" }}
+                Console.WriteLine(thing);
+            }
 
-            };
-            Groups groups = new Groups(testGroup);
 
-           var list = groups.GetGroup("Testing");
-             }
+
+        }
     }
 }

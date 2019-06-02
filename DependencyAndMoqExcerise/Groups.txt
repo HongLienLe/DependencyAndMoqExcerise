@@ -1,0 +1,3 @@
+﻿"Group1" -> [ "Tom", "Group2", "James", "Patrick"]
+"Group2" -> [ "Group3"]
+"Group3" ->  [ "Sarah" ]

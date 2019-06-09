@@ -12,7 +12,7 @@ namespace DependencyAndMoqExcerise
         {
             string path = "/Users/hongle/Projects/DependencyAndMoqExcerise/DependencyAndMoqExcerise/Groups.txt";
             var container = new WindsorContainer();
-            container.Register(Component.For<IReadFile>().ImplementedBy<ReadFile>());
+            container.Register(Component.For<IReadFile>().ImplementedBy<ReadFile>().LifestyleSingleton());
             container.Register(Component.For<IGroups>().ImplementedBy<Groups>());
 
             var readFile = container.Resolve<IReadFile>();
@@ -22,8 +22,6 @@ namespace DependencyAndMoqExcerise
             {
                 Console.WriteLine(thing);
             }
-
-
 
         }
     }

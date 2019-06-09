@@ -16,4 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DependencyAndMoqExcerise\DependencyAndMoqExcerise.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ReadFileTest.cs" />
+  </ItemGroup>
 </Project>

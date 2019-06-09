@@ -13,7 +13,7 @@ namespace DependencyAndMoqExcerise
             this.loadedFile = loadedFile;
 
         }
-        public List<string> GetGroup(string groupName)
+        public List<string> GetAGroup(string groupName)
         {
             var _allGroups = loadedFile.GetDictionary();
 
@@ -28,6 +28,14 @@ namespace DependencyAndMoqExcerise
                 throw new Exception("Group does not Exist");
                  
                  };
+        }
+
+        public Dictionary<string, List<string>> GetAllGroups()
+        {
+            var _allGroups = loadedFile.GetDictionary();
+
+            return _allGroups;
+
         }
     }
 }

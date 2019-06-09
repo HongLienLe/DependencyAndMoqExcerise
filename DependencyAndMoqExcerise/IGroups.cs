@@ -5,6 +5,7 @@ namespace DependencyAndMoqExcerise
 {
     public interface IGroups
     {
-        List<string> GetGroup(string groupName);
+        List<string> GetAGroup(string groupName);
+        Dictionary<string, List<string>> GetAllGroups();
     }
 }

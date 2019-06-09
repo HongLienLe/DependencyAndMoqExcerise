@@ -54,21 +54,5 @@ namespace Tests
 
             Assert.Throws<Exception>(() => groupTest.GetAGroup("ThatDoesNotExist"));
         }
-        //[Test]
-        //public void CanGetAllValuesInDictionaryFromKeys()
-        //{
-        //    Dictionary<string, List<string>> testGroup = new Dictionary<string, List<string>>()
-        //    {
-        //        {"Testing", new List<string>() { "Name1","Testing2" }},
-        //        {"Testing2", new List<string>() { "Name2","Name3","Testing3" }},
-        //        {"Testing3", new List<string>() {"Name4"} }
-
-        //    };
-        //    Groups test = new Groups(testGroup);
-        //    var expected = new List<string>() { "Name1", "Testing2", "Name2", "Name3", "Testing3", "Name4" };
-        //    var result = test.GetGroup("Testing");
-
-        //    Assert.AreEqual(expected, result);
-        //}
     }
 }

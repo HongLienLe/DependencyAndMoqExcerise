@@ -16,12 +16,40 @@ namespace DependencyAndMoqExcerise
             container.Register(Component.For<IGroups>().ImplementedBy<Groups>());
 
             var readFile = container.Resolve<IReadFile>();
+            var groups = container.Resolve<IGroups>();
             readFile.LoadFromFile(path);
 
-            foreach (var thing in readFile.GetDictionary())
+            Console.WriteLine( "Enter Group1, Group2,Group3 for the names in Groups");
+            var userInput = Console.ReadLine();
+
+            switch (userInput)
             {
-                Console.WriteLine(thing);
+                case "Group1":
+                    var names1 = groups.GetAGroup(userInput);
+                    foreach(var name in names1)
+                    {
+                        Console.WriteLine(name);
+                    }
+                    break;
+                case "Group2":
+                   var names2 = groups.GetAGroup(userInput);
+                    foreach (var name in names2)
+                    {
+                        Console.WriteLine(name);
+                    }
+                    break;
+                case "Group3":
+                    var names3 = groups.GetAGroup(userInput);
+                    foreach (var name in names3)
+                    {
+                        Console.WriteLine(name);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("UserInput Invalid.");
+                    break;
             }
+
 
         }
     }

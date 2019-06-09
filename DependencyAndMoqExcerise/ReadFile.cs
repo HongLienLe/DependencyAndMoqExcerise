@@ -70,8 +70,6 @@ namespace DependencyAndMoqExcerise
 
             string key = splitLine[0].Replace('\"',' ').Trim();
 
-
-            Console.WriteLine(key);
             var replacingCharInString = splitLine[2].Replace('[', ' ').Replace(']', ' ').Replace('\"',' ').Split(',');
 
             var newList = TrimWhiteSpace(replacingCharInString);
